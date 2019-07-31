@@ -14,3 +14,4 @@ Then (/I verify the widgets table has "(.*)" rows/) do |row_count|
   puts rows = @browser.find_elements(css: '#widgets_table tr').count - 1
   rows.should == row.count.to_i
 end
+
