@@ -1,23 +1,13 @@
 require 'selenium-webdriver'
-require 'webdrivers'
 require 'cucumber'
-require 'cukehub'
 require 'rspec'
 require 'pry'
 require_relative '../page_objects/widgets_index_page'
-require_relative '../page_objects/widget_new_page'
-
-caps = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: [ "--headless" ]})
 
 @cukehub_api_key = "Gx9CeV3Zo31JwhhvmZ2LsYgu"
 
 Before do
-  if ENV["CHROME"]
 		@browser = Selenium::WebDriver.for :chrome
-  else
-		@browser = Selenium::WebDriver.for :chrome, desired_capabilities: caps
+    @widgets_index = WidgetsIndex.new(@browser)
   end
-  @domain = 'https://fullstackautomationwithruby.com'
-  @widgets_index = WidgetsIndex.new(@browser, @domain)
-  @widget_new = WidgetNew.new(@browser, @domain)
-end
+
